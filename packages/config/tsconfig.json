@@ -1,0 +1,9 @@
+{
+  "extends": "@repo/typescript-config/tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "baseUrl": "./src"
+  },
+  "include": ["src"],
+  "exclude": ["./eslint.config.mjs", "dist"]
+}
