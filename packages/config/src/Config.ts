@@ -1,18 +1,20 @@
-import { IConfig } from "./config.types";
-import * as configs from "./config";
+import { IConfig } from "./configuration.interface";
+import * as environments from "./environments";
 
 export class Config {
   public config: IConfig;
 
   constructor() {
-    let config: IConfig = configs.defaultConfig;
+    const config: IConfig = environments.fallback;
+    const env = process.env["NODE_ENV"] ?? "development";
 
-    const env = process.env["NODE_ENV"] || "development";
-    if (Object.keys(configs).includes(env))
-      config = {
+    if (Object.keys(environments).includes(env)) {
+      this.config = {
         ...config,
-        ...configs[env as keyof typeof configs],
+        ...environments[env as keyof typeof environments],
       };
-    this.config = config;
+    } else {
+      this.config = config;
+    }
   }
 }

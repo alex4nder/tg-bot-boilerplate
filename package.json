@@ -4,7 +4,10 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
-    "lint": "turbo lint"
+    "lint": "turbo lint",
+    "db:migration:run": "yarn workspace @repo/db migration:run",
+    "db:migration:revert": "yarn workspace @repo/db migration:revert",
+    "db:migration:revert:all": "yarn workspace @repo/db migration:revert:all"
   },
   "devDependencies": {
     "env-cmd": "^10.1.0",
