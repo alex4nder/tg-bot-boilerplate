@@ -17,13 +17,9 @@ export class User {
   @Column()
   name: string;
 
-  @CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
+  @CreateDateColumn({ name: "ctime", type: "timestamp" })
   createdAt: Date;
 
-  @UpdateDateColumn({
-    type: "timestamp",
-    default: () => "CURRENT_TIMESTAMP",
-    onUpdate: "CURRENT_TIMESTAMP",
-  })
+  @UpdateDateColumn({ name: "mtime", type: "timestamp" })
   updatedAt: Date;
 }
