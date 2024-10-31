@@ -1,0 +1,11 @@
+{
+    "watch": [
+        "src",
+        "package.json",
+        "tsconfig.json",
+        "../../packages/"
+    ],
+    "ext": ".ts,.js, .json",
+    "ignore": [],
+    "exec": "tsc -b && node ./dist"
+}

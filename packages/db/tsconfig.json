@@ -1,16 +1,9 @@
 {
-  "extends": "@repo/typescript-config/tsconfig.base.json",
+  "extends": "@repo/typescript-config/base.json",
   "compilerOptions": {
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "strictPropertyInitialization": false,
-    "noImplicitAny": false,
-    "strictBindCallApply": false,
-    "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false,
     "outDir": "./dist",
-    "baseUrl": "."
+    "baseUrl": "./src"
   },
-  "include": ["src/**/*"],
-  "exclude": ["./eslint.config.mjs", "dist"]
+  "include": ["src"],
+  "exclude": ["./eslint.config.mjs", "dist", "node_modules"]
 }

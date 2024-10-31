@@ -1,22 +1,25 @@
 {
   "name": "@repo/db",
   "version": "1.0.0",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "dist/index.js",
   "scripts": {
     "dev": "nodemon",
     "build": "tsc -p tsconfig.build.json",
     "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
-    "migration:run": "typeorm migration:run -d ./dist/index.js",
-    "migration:revert": "typeorm migration:run -d ./dist/index.ts",
-    "migration:revert:all": "typeorm migration:run -d ./dist/index.ts"
+    "migration:generate": "tsc -b && typeorm migration:generate -d ./dist/index.js src/migrations/$1",
+    "migration:create": "typeorm migration:create src/migrations/$1",
+    "migration:run": "tsc -b && typeorm migration:run -d ./dist/index.js",
+    "migration:revert": "tsc -b && typeorm migration:run -d ./dist/index.js",
+    "migration:revert:all": "tsc -b && typeorm migration:run -d ./dist/index.js"
   },
   "devDependencies": {
     "@repo/config": "workspace:^",
+    "@repo/eslint-config": "workspace:^",
     "@repo/typescript-config": "workspace:^",
     "@types/dotenv": "^8.2.0",
     "@types/node": "^20.12.7",
     "nodemon": "^3.1.0",
+    "reflect-metadata": "^0.1.13",
     "sqlite3": "^5.1.7",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5"

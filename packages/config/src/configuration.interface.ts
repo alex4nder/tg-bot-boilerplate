@@ -11,7 +11,7 @@ export interface IConfig {
     host: string;
     port: number;
     username: string;
-    password?: string;
+    password: string;
     database: string;
     schema: string;
     synchronize: boolean;
