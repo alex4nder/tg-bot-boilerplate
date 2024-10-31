@@ -18,8 +18,8 @@
     "@repo/typescript-config": "workspace:^",
     "@types/dotenv": "^8.2.0",
     "@types/node": "^20.12.7",
+    "dotenv": "^16.4.5",
     "nodemon": "^3.1.0",
-    "reflect-metadata": "^0.1.13",
     "sqlite3": "^5.1.7",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5"

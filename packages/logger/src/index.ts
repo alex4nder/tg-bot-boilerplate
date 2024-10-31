@@ -9,6 +9,10 @@ const logVault = new LogVault({
     arrayLength: 12,
     replaceWith: "...[Truncated]",
   },
+  maskOptions: {
+    maskLabel: "...Masked",
+    fields: ["token"],
+  },
 })
   .withConsole()
   .captureConsole();

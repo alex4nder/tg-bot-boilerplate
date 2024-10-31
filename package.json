@@ -12,10 +12,7 @@
     "db:migration:revert:all": "yarn workspace @repo/db migration:revert:all"
   },
   "devDependencies": {
-    "env-cmd": "^10.1.0",
-    "prettier": "^3.2.5",
-    "turbo": "^2.1.1",
-    "typescript": "^5.4.5"
+    "turbo": "^2.1.1"
   },
   "engines": {
     "node": ">=18"
