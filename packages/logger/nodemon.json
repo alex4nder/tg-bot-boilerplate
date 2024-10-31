@@ -5,5 +5,5 @@
   ],
   "ext": ".ts,.js, .json",
   "ignore": [],
-  "exec": "tsc -b; echo '' >> package.json"
+  "exec": "tsc -b"
 }
