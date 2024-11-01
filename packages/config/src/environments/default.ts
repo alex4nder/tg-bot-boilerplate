@@ -1,7 +1,9 @@
 import { IConfig } from "../configuration.interface";
 
+const appName = "tg-bot-boilerplate";
+
 export const fallback: IConfig = {
-  appName: "tg-bot-boilerplate",
+  appName,
   appServer: {
     port: 3001,
   },
@@ -17,5 +19,9 @@ export const fallback: IConfig = {
     database: "telegramdb",
     schema: "dev",
     synchronize: false,
+  },
+  redisOptions: {
+    host: "localhost",
+    port: 6379,
   },
 };

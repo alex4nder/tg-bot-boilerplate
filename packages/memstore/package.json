@@ -1,0 +1,25 @@
+{
+  "name": "@repo/memstore",
+  "version": "1.0.0",
+  "description": "Redis-based memory store library",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "nodemon",
+    "build": "tsc -p tsconfig.build.json",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@repo/config": "workspace:^",
+    "@repo/eslint-config": "workspace:^",
+    "@repo/logger": "workspace:^",
+    "@repo/typescript-config": "workspace:^",
+    "@types/jest": "^29.5.14",
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.0",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "ioredis": "^5.4.1"
+  }
+}
