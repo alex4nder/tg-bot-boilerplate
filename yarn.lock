@@ -1250,6 +1250,23 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@repo/memstore@workspace:packages/memstore":
+  version: 0.0.0-use.local
+  resolution: "@repo/memstore@workspace:packages/memstore"
+  dependencies:
+    "@repo/config": "workspace:^"
+    "@repo/eslint-config": "workspace:^"
+    "@repo/logger": "workspace:^"
+    "@repo/typescript-config": "workspace:^"
+    "@types/jest": "npm:^29.5.14"
+    ioredis: "npm:^5.4.1"
+    jest: "npm:^29.7.0"
+    nodemon: "npm:^3.1.0"
+    ts-jest: "npm:^29.2.5"
+    typescript: "npm:^5.4.5"
+  languageName: unknown
+  linkType: soft
+
 "@repo/typescript-config@workspace:^, @repo/typescript-config@workspace:packages/typescript-config":
   version: 0.0.0-use.local
   resolution: "@repo/typescript-config@workspace:packages/typescript-config"

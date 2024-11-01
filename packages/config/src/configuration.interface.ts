@@ -1,3 +1,6 @@
+import { RedisOptions } from "ioredis";
+import { DataSourceOptions } from "typeorm";
+
 export interface IConfig {
   appName: string;
   appServer: {
@@ -6,14 +9,6 @@ export interface IConfig {
   telegramBot: {
     token: string;
   };
-  typeOrmOptions: {
-    type: string;
-    host: string;
-    port: number;
-    username: string;
-    password: string;
-    database: string;
-    schema: string;
-    synchronize: boolean;
-  };
+  typeOrmOptions: DataSourceOptions;
+  redisOptions: RedisOptions;
 }
