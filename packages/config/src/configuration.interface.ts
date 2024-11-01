@@ -11,4 +11,5 @@ export interface IConfig {
   };
   typeOrmOptions: DataSourceOptions;
   redisOptions: RedisOptions;
+  bullMqOptions: RedisOptions;
 }

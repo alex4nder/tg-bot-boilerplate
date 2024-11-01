@@ -1,8 +1,5 @@
 import MemStore from "../src";
 import Redis from "ioredis";
-import { config } from "@repo/config";
-
-const { appName } = config;
 
 jest.mock("ioredis");
 
@@ -31,23 +28,20 @@ describe("MemStore", () => {
     const mockSetex = MemStore["redis"].setex as jest.Mock;
     await MemStore.set({
       key: "testKey",
-      value: JSON.stringify({ name: "Alice" }),
+      value: JSON.stringify({ name: "John Doe" }),
       ttl: 300,
     });
     expect(mockSetex).toHaveBeenCalledWith(
-      `${appName}:testKey`,
+      "testKey",
       300,
-      JSON.stringify({ name: "Alice" }),
+      JSON.stringify({ name: "John Doe" }),
     );
   });
 
   it("should set a value without TTL", async () => {
     const mockSet = MemStore["redis"].set as jest.Mock;
     await MemStore.set({ key: "testKeyNoTTL", value: "testValue" });
-    expect(mockSet).toHaveBeenCalledWith(
-      `${appName}:testKeyNoTTL`,
-      "testValue",
-    );
+    expect(mockSet).toHaveBeenCalledWith("testKeyNoTTL", "testValue");
   });
 
   it("should get a value", async () => {
@@ -68,7 +62,7 @@ describe("MemStore", () => {
     const mockDel = MemStore["redis"].del as jest.Mock;
     mockDel.mockResolvedValue(1);
     const result = await MemStore.del("testKey");
-    expect(mockDel).toHaveBeenCalledWith(`${appName}:testKey`);
+    expect(mockDel).toHaveBeenCalledWith("testKey");
     expect(result).toBe(true);
   });
 
@@ -76,7 +70,7 @@ describe("MemStore", () => {
     const mockExists = MemStore["redis"].exists as jest.Mock;
     mockExists.mockResolvedValue(1);
     const result = await MemStore.exists("testKey");
-    expect(mockExists).toHaveBeenCalledWith(`${appName}:testKey`);
+    expect(mockExists).toHaveBeenCalledWith("testKey");
     expect(result).toBe(true);
   });
 
@@ -84,7 +78,7 @@ describe("MemStore", () => {
     const mockKeys = MemStore["redis"].keys as jest.Mock;
     mockKeys.mockResolvedValue(["key1", "key2"]);
     const result = await MemStore.keys("key*");
-    expect(mockKeys).toHaveBeenCalledWith(`${appName}:key*`);
+    expect(mockKeys).toHaveBeenCalledWith("key*");
     expect(result).toEqual(["key1", "key2"]);
   });
 
