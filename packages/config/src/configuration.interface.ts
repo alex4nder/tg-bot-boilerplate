@@ -4,7 +4,8 @@ import { DataSourceOptions } from "typeorm";
 export interface IConfig {
   appName: string;
   appServer: {
-    port?: number;
+    port: number;
+    baseUrl: string;
   };
   telegramBot: {
     token: string;

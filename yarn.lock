@@ -1267,6 +1267,22 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@repo/queue@workspace:packages/queue":
+  version: 0.0.0-use.local
+  resolution: "@repo/queue@workspace:packages/queue"
+  dependencies:
+    "@repo/config": "workspace:^"
+    "@repo/eslint-config": "workspace:^"
+    "@repo/logger": "workspace:^"
+    "@repo/typescript-config": "workspace:^"
+    axios: "npm:^1.7.7"
+    bullmq: "npm:^5.22.0"
+    ioredis: "npm:^5.4.1"
+    nodemon: "npm:^3.1.0"
+    typescript: "npm:^5.4.5"
+  languageName: unknown
+  linkType: soft
+
 "@repo/typescript-config@workspace:^, @repo/typescript-config@workspace:packages/typescript-config":
   version: 0.0.0-use.local
   resolution: "@repo/typescript-config@workspace:packages/typescript-config"
@@ -1971,7 +1987,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:1.7.7":
+"axios@npm:1.7.7, axios@npm:^1.7.7":
   version: 1.7.7
   resolution: "axios@npm:1.7.7"
   dependencies:
@@ -2247,6 +2263,21 @@ __metadata:
     tslib: "npm:^2.0.0"
     uuid: "npm:^9.0.0"
   checksum: 10c0/f83007adce0f39c5b996bb614daab93d2cdf1e840d030e1f67007940c6fd1c3cfe9fa54da41670cfedb2b15ea31defaa0d2d4519cc4f2841d1811d60aa7867fe
+  languageName: node
+  linkType: hard
+
+"bullmq@npm:^5.22.0":
+  version: 5.22.0
+  resolution: "bullmq@npm:5.22.0"
+  dependencies:
+    cron-parser: "npm:^4.6.0"
+    ioredis: "npm:^5.4.1"
+    msgpackr: "npm:^1.10.1"
+    node-abort-controller: "npm:^3.1.1"
+    semver: "npm:^7.5.4"
+    tslib: "npm:^2.0.0"
+    uuid: "npm:^9.0.0"
+  checksum: 10c0/0c88b13da8752219cc72a6f939feff2562fe6a74044c0a4dc7a31ca7c4db2187f228e002301964871a460f06bf6cdafeba6c6ea994f186a1ed92776732ce3fa4
   languageName: node
   linkType: hard
 
@@ -7013,6 +7044,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "tg-bot-boilerplate@workspace:."
   dependencies:
+    bullmq: "npm:^5.22.0"
     turbo: "npm:^2.1.1"
   languageName: unknown
   linkType: soft

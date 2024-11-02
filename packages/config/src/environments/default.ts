@@ -8,10 +8,13 @@ const redisOptions: RedisOptions = {
   port: 6379,
 };
 
+const appServerPort = 3001;
+
 export const fallback: IConfig = {
   appName: "TG Bot Starter",
   appServer: {
-    port: 3001,
+    port: appServerPort,
+    baseUrl: `http://localhost:${appServerPort}`,
   },
   telegramBot: {
     token: process.env["TG_BOT_TOKEN"] as string,
