@@ -8,7 +8,7 @@ interface RedisSetOptions {
   ttl?: number;
 }
 
-const { redisOptions, appName } = config;
+const { redisOptions } = config;
 
 export default class MemStore {
   private static redis: Redis;
@@ -45,8 +45,8 @@ export default class MemStore {
     this.initialize();
     try {
       ttl
-        ? await this.redis.setex(`${appName}:${key}`, ttl, value)
-        : await this.redis.set(`${appName}:${key}`, value);
+        ? await this.redis.setex(key, ttl, value)
+        : await this.redis.set(key, value);
       return true;
     } catch (error) {
       logger.error(`Error setting value in Redis for key "${key}":`, error);
@@ -57,7 +57,7 @@ export default class MemStore {
   static async get<T>(key: string): Promise<T | null> {
     this.initialize();
     try {
-      const value = await this.redis.get(`${appName}:${key}`);
+      const value = await this.redis.get(key);
       return value ? JSON.parse(value) : null;
     } catch (error) {
       logger.error("Error getting value from Redis:", error);
@@ -68,7 +68,7 @@ export default class MemStore {
   static async del(key: string): Promise<boolean> {
     this.initialize();
     try {
-      const result = await this.redis.del(`${appName}:${key}`);
+      const result = await this.redis.del(key);
       return result === 1;
     } catch (error) {
       logger.error("Error deleting value from Redis:", error);
@@ -79,7 +79,7 @@ export default class MemStore {
   static async keys(pattern: string = "*"): Promise<string[]> {
     this.initialize();
     try {
-      const keys = await this.redis.keys(`${appName}:${pattern}`);
+      const keys = await this.redis.keys(pattern);
       return keys;
     } catch (error) {
       logger.error(
@@ -93,7 +93,7 @@ export default class MemStore {
   static async exists(key: string): Promise<boolean> {
     this.initialize();
     try {
-      const result = await this.redis.exists(`${appName}:${key}`);
+      const result = await this.redis.exists(key);
       return result === 1;
     } catch (error) {
       logger.error(`Error checking existence of key "${key}" in Redis:`, error);

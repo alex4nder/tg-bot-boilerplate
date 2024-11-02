@@ -1,11 +1,20 @@
 import { IConfig } from "../configuration.interface";
+import { RedisOptions } from "ioredis";
 
-const appName = "tg-bot-boilerplate";
+const appCode = "tg-bot-starter";
+
+const redisOptions: RedisOptions = {
+  host: "localhost",
+  port: 6379,
+};
+
+const appServerPort = 3001;
 
 export const fallback: IConfig = {
-  appName,
+  appName: "TG Bot Starter",
   appServer: {
-    port: 3001,
+    port: appServerPort,
+    baseUrl: `http://localhost:${appServerPort}`,
   },
   telegramBot: {
     token: process.env["TG_BOT_TOKEN"] as string,
@@ -21,7 +30,8 @@ export const fallback: IConfig = {
     synchronize: false,
   },
   redisOptions: {
-    host: "localhost",
-    port: 6379,
+    ...redisOptions,
+    keyPrefix: `${appCode}:`,
   },
+  bullMqOptions: redisOptions,
 };
