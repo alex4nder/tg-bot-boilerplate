@@ -7,13 +7,13 @@
     "build": "tsc -p tsconfig.build.json"
   },
   "devDependencies": {
+    "@repo/config": "workspace:^",
     "@repo/eslint-config": "workspace:^",
+    "@repo/typescript-config": "workspace:^",
     "nodemon": "^3.1.0",
     "typescript": "^5.4.5"
   },
   "dependencies": {
-    "@repo/config": "workspace:^",
-    "@repo/typescript-config": "workspace:^",
     "log-vault": "^2.0.5"
   }
 }

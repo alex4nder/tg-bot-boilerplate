@@ -4,16 +4,6 @@
     "build": {
       "dependsOn": [
         "^build"
-      ],
-      "inputs": [
-        "$TURBO_DEFAULT$",
-        ".env",
-        ".env.*",
-        "./packages/config"
-      ],
-      "outputs": [
-        ".next/**",
-        "!.next/cache/**"
       ]
     },
     "lint": {
@@ -27,16 +17,7 @@
     "test": {
       "dependsOn": [
         "^test"
-      ],
-      "inputs": [
-        "$TURBO_DEFAULT$",
-        ".env",
-        ".env.*",
-        "./packages/config",
-        "**/*.test.ts",
-        "**/*.spec.ts"
-      ],
-      "outputs": []
+      ]
     }
   }
 }

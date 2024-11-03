@@ -1195,6 +1195,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@repo/axios-wrapper@workspace:^, @repo/axios-wrapper@workspace:packages/axios-wrapper":
+  version: 0.0.0-use.local
+  resolution: "@repo/axios-wrapper@workspace:packages/axios-wrapper"
+  dependencies:
+    "@repo/eslint-config": "workspace:^"
+    "@repo/logger": "workspace:^"
+    "@repo/typescript-config": "workspace:^"
+    axios: "npm:^1.7.7"
+    nodemon: "npm:^3.1.0"
+    typescript: "npm:^5.4.5"
+  languageName: unknown
+  linkType: soft
+
 "@repo/config@workspace:^, @repo/config@workspace:packages/config":
   version: 0.0.0-use.local
   resolution: "@repo/config@workspace:packages/config"
@@ -1271,6 +1284,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@repo/queue@workspace:packages/queue"
   dependencies:
+    "@repo/axios-wrapper": "workspace:^"
     "@repo/config": "workspace:^"
     "@repo/eslint-config": "workspace:^"
     "@repo/logger": "workspace:^"

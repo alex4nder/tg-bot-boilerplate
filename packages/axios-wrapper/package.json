@@ -1,5 +1,5 @@
 {
-  "name": "@repo/queue",
+  "name": "@repo/axios-wrapper",
   "version": "1.0.0",
   "main": "dist/index.js",
   "scripts": {
@@ -8,8 +8,6 @@
     "test": "jest"
   },
   "devDependencies": {
-    "@repo/axios-wrapper": "workspace:^",
-    "@repo/config": "workspace:^",
     "@repo/eslint-config": "workspace:^",
     "@repo/logger": "workspace:^",
     "@repo/typescript-config": "workspace:^",
@@ -17,8 +15,6 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
-    "axios": "^1.7.7",
-    "bullmq": "^5.22.0",
-    "ioredis": "^5.4.1"
+    "axios": "^1.7.7"
   }
 }
