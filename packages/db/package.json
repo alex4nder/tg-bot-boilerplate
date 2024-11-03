@@ -6,8 +6,8 @@
     "dev": "nodemon",
     "build": "tsc -p tsconfig.build.json",
     "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
-    "migration:generate": "tsc -b && typeorm migration:generate -d ./dist/index.js src/migrations/$1",
-    "migration:create": "typeorm migration:create src/migrations/$1",
+    "migration:generate": "tsc -b && typeorm migration:generate -d ./dist/index.js src/migration/$1",
+    "migration:create": "typeorm migration:create src/migration/$1",
     "migration:run": "tsc -b && typeorm migration:run -d ./dist/index.js",
     "migration:revert": "tsc -b && typeorm migration:run -d ./dist/index.js",
     "migration:revert:all": "tsc -b && typeorm migration:run -d ./dist/index.js"

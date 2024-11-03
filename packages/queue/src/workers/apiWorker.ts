@@ -1,9 +1,17 @@
 import { Worker, Job } from "bullmq";
 import { logger } from "@repo/logger";
 import { config } from "@repo/config";
-import { apiClient } from "../api/apiRequest";
+import AxiosWrapper from "@repo/axios-wrapper";
 
-const { bullMqOptions } = config;
+const { bullMqOptions, appServer } = config;
+
+const apiClient = new AxiosWrapper({
+  baseURL: appServer.baseUrl,
+  timeout: 5000,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
 
 const apiWorker = new Worker(
   "apiQueue",
