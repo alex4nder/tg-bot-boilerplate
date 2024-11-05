@@ -1,6 +1,8 @@
 import { RedisOptions } from "ioredis";
 import { DataSourceOptions } from "typeorm";
 
+type BullMqOptions = Omit<RedisOptions, "keyPrefix">;
+
 export interface IConfig {
   appName: string;
   appServer: {
@@ -12,5 +14,5 @@ export interface IConfig {
   };
   typeOrmOptions: DataSourceOptions;
   redisOptions: RedisOptions;
-  bullMqOptions: RedisOptions;
+  bullMqOptions: BullMqOptions;
 }
