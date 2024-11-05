@@ -2,7 +2,7 @@ import { IConfig } from "./configuration.interface";
 import * as environments from "./environments";
 
 export class Config {
-  public config: IConfig;
+  private readonly config: IConfig;
 
   constructor() {
     const config: IConfig = environments.fallback;
@@ -16,5 +16,9 @@ export class Config {
     } else {
       this.config = config;
     }
+  }
+
+  get(): IConfig {
+    return this.config;
   }
 }
