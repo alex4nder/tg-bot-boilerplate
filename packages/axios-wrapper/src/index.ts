@@ -1,10 +1,5 @@
-import axios, {
-  AxiosError,
-  AxiosInstance,
-  AxiosRequestConfig,
-  AxiosResponse,
-} from "axios";
-import { logger } from "@repo/logger";
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { AxiosInterceptor } from "./interceptors";
 
 interface RequestOptions {
   method: "get" | "post" | "put" | "delete";
@@ -19,39 +14,7 @@ export default class AxiosWrapper {
   constructor(config: AxiosRequestConfig) {
     this.instance = axios.create(config);
 
-    this.instance.interceptors.request.use(
-      (config) => {
-        return config;
-      },
-      (error) => {
-        logger.error("Request error:", { message: error.message });
-        return Promise.reject(error);
-      },
-    );
-
-    this.instance.interceptors.response.use(
-      (response) => {
-        logger.info(`Received response from "${response.config.url}"`, {
-          status: response.status,
-        });
-        return response;
-      },
-      (error: AxiosError) => {
-        const errorDetails = {
-          status: error.response?.status || 500,
-          message: error.message,
-          details: error.response?.data,
-          stack: error.stack,
-        };
-
-        logger.error(
-          `Error response from "${error.config?.url}"`,
-          errorDetails,
-        );
-
-        return Promise.reject(errorDetails);
-      },
-    );
+    this.setInterceptors();
   }
 
   public request<T = any>(options: RequestOptions): Promise<AxiosResponse<T>> {
@@ -61,5 +24,11 @@ export default class AxiosWrapper {
       data: options.data,
       ...options.config,
     });
+  }
+
+  private setInterceptors(): this {
+    new AxiosInterceptor(this.instance);
+
+    return this;
   }
 }

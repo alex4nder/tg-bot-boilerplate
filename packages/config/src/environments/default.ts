@@ -16,16 +16,22 @@ export const fallback: IConfig = {
     port: appServerPort,
     baseUrl: `http://localhost:${appServerPort}`,
   },
+  appClient: {
+    baseUrl: "http://127.0.0.1:8080",
+  },
   telegramBot: {
     token: process.env["TG_BOT_TOKEN"] as string,
+    client: {
+      environment: "test",
+    },
   },
   typeOrmOptions: {
     type: "postgres",
     host: "localhost",
     port: 5432,
-    username: "telegram_boilerplate_user",
-    password: "telegram_boilerplate_password",
-    database: "telegramdb",
+    username: "telegram_bot_starter_user",
+    password: "telegram_bot_starter_password",
+    database: "telegrambotstarterdb",
     schema: "dev",
     synchronize: false,
   },

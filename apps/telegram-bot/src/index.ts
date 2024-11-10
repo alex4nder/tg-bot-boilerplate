@@ -3,9 +3,11 @@ import { config } from "@repo/config";
 import { logger } from "@repo/logger";
 import { apiQueue } from "@repo/queue";
 
-const { telegramBot } = config;
+const { telegramBot, appClient } = config;
 
-const bot = new Bot(telegramBot.token || "");
+const bot = new Bot(telegramBot.token || "", {
+  client: telegramBot.client,
+});
 
 bot.command("start", async (ctx) => {
   logger.info("Welcome! Up and running.");
@@ -22,6 +24,19 @@ bot.command("start", async (ctx) => {
     endpoint: "/users",
     method: "POST",
     payload: { userId, chatId, userName },
+  });
+
+  ctx.reply("Start Web App", {
+    reply_markup: {
+      inline_keyboard: [
+        [
+          {
+            text: "Open app",
+            web_app: { url: appClient.baseUrl },
+          },
+        ],
+      ],
+    },
   });
 
   ctx.reply("Welcome! Up and running.");

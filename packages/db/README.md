@@ -69,3 +69,35 @@ This package includes several commands for managing database migrations. You can
   ```bash
   yarn workspace @repo/db migration:revert:all
   ```
+
+### Development env setup
+```bash
+CREATE USER telegram_bot_starter_user WITH PASSWORD 'telegram_bot_starter_password';
+
+CREATE DATABASE telegrambotstarterdb;
+
+\c telegrambotstarterdb
+
+CREATE SCHEMA dev;
+CREATE SCHEMA test;
+
+GRANT ALL PRIVILEGES ON DATABASE telegrambotstarterdb TO telegram_bot_starter_user;
+
+GRANT CONNECT ON DATABASE telegrambotstarterdb TO telegram_bot_starter_user;
+GRANT CREATE ON DATABASE telegrambotstarterdb TO telegram_bot_starter_user;
+
+GRANT USAGE ON SCHEMA dev TO telegram_bot_starter_user;
+GRANT CREATE ON SCHEMA dev TO telegram_bot_starter_user;
+
+GRANT USAGE ON SCHEMA test TO telegram_bot_starter_user;
+GRANT CREATE ON SCHEMA test TO telegram_bot_starter_user;
+
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA dev TO telegram_bot_starter_user;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA test TO telegram_bot_starter_user;
+
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA dev TO telegram_bot_starter_user;
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA test TO telegram_bot_starter_user;
+
+ALTER DEFAULT PRIVILEGES IN SCHEMA dev GRANT ALL PRIVILEGES ON TABLES TO telegram_bot_starter_user;
+ALTER DEFAULT PRIVILEGES IN SCHEMA test GRANT ALL PRIVILEGES ON TABLES TO telegram_bot_starter_user;
+```

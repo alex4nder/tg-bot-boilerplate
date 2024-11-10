@@ -8,7 +8,6 @@ const { appServer } = config;
 
 AppDataSource.initialize()
   .then(() => {
-    logger.info("Database connected");
     app.listen(appServer.port, () => {
       logger.info(`Example of server running on port ${appServer.port}`);
     });
