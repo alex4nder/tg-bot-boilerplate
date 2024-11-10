@@ -1,0 +1,7 @@
+.yarn
+.pnp*
+**/dist
+**/.quasar
+
+# Ignore all builts
+**/dist/**/*

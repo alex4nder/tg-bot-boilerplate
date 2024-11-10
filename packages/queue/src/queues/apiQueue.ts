@@ -7,5 +7,5 @@ const redisOptions: RedisOptions = bullMqOptions;
 
 export const apiQueue = new Queue("apiQueue", {
   connection: redisOptions,
-  defaultJobOptions: { removeOnComplete: true, removeOnFail: true },
+  defaultJobOptions: { removeOnComplete: true },
 });

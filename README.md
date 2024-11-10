@@ -1,44 +1,64 @@
-# Turborepo starter
+# Telegram Bot Starter Template
 
-This is an official starter Turborepo.
+This repository is a boilerplate for creating Telegram bots of any complexity. The project is structured as a monorepo on TypeScript using [**Turborepo**](https://turbo.build/) and provides examples for setting up a server (`Express`), a client (`PrimeVue`), and a bot (`grammY`).
 
-## Using this example
+## Features
 
-Run the following command:
+- **Monorepo Structure**: Organized using Turborepo to manage multiple services and packages.
+- **Server, Client, Bot Examples**:
+  - **Server**: Built with `Express`, serving as the backend API.
+  - **Client**: Frontend interface using `PrimeVue`.
+  - **Telegram Bot**: A sample bot created using the `grammY` framework.
+- **Telegram Mini Apps Support**: Example included for creating and testing Telegram mini apps locally without HTTPS (in development).
 
-```sh
-npx create-turbo@latest
-```
-
-## What's inside?
-
-This Turborepo includes the following packages/apps:
+This repo includes the following packages/apps:
 
 ### Apps and Packages
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
+- `server`: Built with `Express`, serving as the backend API.
+- `client`: Frontend interface using `PrimeVue`.
+- `telegram-bot`: A sample bot created using the `grammY` framework.
+- `@repo/logger`: for working with [log-vault](https://www.npmjs.com/package/log-vault).
+- `@repo/queue`: provides a simple implementation of a job queue using [BullMQ](https://docs.bullmq.io/) for processing jobs in a scalable manner.
+- `@repo/axios-wrapper`: a wrapper around the `Axios` library for convenient logging and error handling in HTTP requests.
+- `@repo/config`: centralized configuration management to streamline environment variables and settings.
+- `@repo/memstore`: simplified interface for working with `Redis`.
 - `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 - `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
 ### Utilities
 
-This Turborepo has some additional tools already setup for you:
+This repo has some additional tools already setup for you:
 
 - [TypeScript](https://www.typescriptlang.org/) for static type checking
 - [ESLint](https://eslint.org/) for code linting
 - [Prettier](https://prettier.io) for code formatting
+
+## Getting Started
+
+### Clone the Repository
+```bash
+   git clone <repository-url>
+   cd <repository-directory>
+```
+
+### Install Dependencies
+```bash
+   yarn install
+```
+
+### Settings environment variables
+```bash
+   TG_BOT_TOKEN=<token>
+```
 
 ### Build
 
 To build all apps and packages, run the following command:
 
 ```
-cd my-turborepo
-pnpm build
+cd <repo>
+yarn build
 ```
 
 ### Develop
@@ -46,36 +66,41 @@ pnpm build
 To develop all apps and packages, run the following command:
 
 ```
-cd my-turborepo
-pnpm dev
+cd <repo>
+yarn dev
 ```
 
-### Remote Caching
+## Setting Up Telegram Test Server
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+To develop and test Telegram mini-apps effectively, it's beneficial to use the Telegram Test Server. This allows for local host testing and eliminates the HTTPS requirement for development.
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+### Accessing the Test Server
 
-```
-cd my-turborepo
-npx turbo login
-```
+1. **Create an Account on Telegram Test Server**:
+   - Register on the test server using your phone number.
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+2. **Setup Instructions by Platform**:
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+   #### Telegram on iOS:
+   - Quickly tap the Settings section 10 times.
+   - Tap `Accounts`, then `Login to another account`.
+   - Tap `Test` to switch to the test server and create a new account.
 
-```
-npx turbo link
-```
+   #### Telegram on Android:
+   - Install Telegram Beta.
+   - Open Telegram Beta, check "Test server" and create a new account.
 
-## Useful Links
+3. **Telegram Desktop Configuration**:
 
-Learn more about the power of Turborepo:
+   - **Windows**:
+     - Open the side menu, expand the menu item where the username is shown.
+     - Press **Shift + Alt** and right-click on `Add Account`.
+     - Choose `Test Server`, then scan the QR code using a phone account on the test server.
+   
+   - **Mac OS**:
+     - Click the Settings icon 10 times to open the Debug Menu.
+     - Hold **⌘** and click `Add Account`.
+     - Scan the QR code with a phone account on the test server.
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+4. **Create a Bot on Test Server**:
+   - Open `@BotFather` on the Test Server and create your bot as usual.

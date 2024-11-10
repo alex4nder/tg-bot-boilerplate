@@ -10,7 +10,9 @@
     "@repo/eslint-config": "workspace:^",
     "@repo/typescript-config": "workspace:^",
     "@types/dotenv": "^8.2.0",
+    "grammy": "^1.30.0",
     "nodemon": "^3.1.0",
+    "typeorm": "^0.3.20",
     "typescript": "^5.4.5"
   },
   "dependencies": {

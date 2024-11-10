@@ -9,4 +9,4 @@ dotenvConfig({ path: join(cwd, ".env") });
 import { Config } from "./Config";
 import { IConfig } from "./configuration.interface";
 
-export const config: IConfig = new Config().config;
+export const config: IConfig = new Config().get();
