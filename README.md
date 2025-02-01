@@ -38,18 +38,18 @@ This repo has some additional tools already setup for you:
 
 ### Clone the Repository
 ```bash
-   git clone <repository-url>
-   cd <repository-directory>
+git clone <repository-url>
+cd <repository-directory>
 ```
 
 ### Install Dependencies
 ```bash
-   yarn install
+yarn install
 ```
 
 ### Settings environment variables
 ```bash
-   TG_BOT_TOKEN=<token>
+TG_BOT_TOKEN=<token>
 ```
 
 ### Build
