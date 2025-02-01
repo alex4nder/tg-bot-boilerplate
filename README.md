@@ -23,7 +23,6 @@ This repo includes the following packages/apps:
 - `@repo/axios-wrapper`: a wrapper around the `Axios` library for convenient logging and error handling in HTTP requests.
 - `@repo/config`: centralized configuration management to streamline environment variables and settings.
 - `@repo/memstore`: simplified interface for working with `Redis`.
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 - `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
 
 ### Utilities

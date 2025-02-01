@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-extraneous-class */
 import { config } from "@repo/config";
 import { logger } from "@repo/logger";
 import Redis from "ioredis";
@@ -51,16 +52,17 @@ export default class MemStore {
     const isJsonString = (str: string) => {
       try {
         JSON.parse(str);
-      } catch (e) {
+      } catch (error) {
+        logger.error(`Error parsing value from Redis for key "${key}":`, error);
         return false;
       }
       return true;
     };
 
     try {
-      const value = await redis.get(key);
+      const value: string | null = await redis.get(key);
       if (value) {
-        return isJsonString(value) ? JSON.parse(value) : value;
+        return isJsonString(value) ? (JSON.parse(value) as T) : value;
       }
       return null;
     } catch (error) {
@@ -81,11 +83,11 @@ export default class MemStore {
     }
   }
 
-  static async keys(pattern: string = "*"): Promise<string[]> {
+  static async keys(pattern = "*"): Promise<string[]> {
     await initialize();
 
     try {
-      const prefix = redis.options.keyPrefix || "";
+      const prefix = redis.options.keyPrefix ?? "";
       const prefixedPattern = `${prefix}${pattern}`;
       const keys = await redis.keys(prefixedPattern);
       return keys.map((key) =>
